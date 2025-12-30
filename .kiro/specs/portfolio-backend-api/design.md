@@ -31,7 +31,7 @@ graph TB
 ```
 src/
 ├── controllers/          # Request handlers
-│   ├── authController.js
+│   ├── auth2Controller.js
 │   ├── profileController.js
 │   ├── aboutController.js
 │   ├── projectController.js
@@ -91,7 +91,7 @@ src/
 4. AuthGuard middleware validates token and extracts user information
 
 **Components:**
-- `authController.js`: Handles registration, login, and user info endpoints
+- `auth2Controller.js`: Handles registration, login, and user info endpoints
 - `authService.js`: Implements authentication business logic
 - `authGuard.js`: Middleware for protecting routes
 - `User.js`: User model with password hashing

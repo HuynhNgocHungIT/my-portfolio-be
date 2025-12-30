@@ -1,6 +1,6 @@
 const authService = require('../services/authService');
 
-class AuthController {
+class Auth2Controller {
   /**
    * Register a new user
    * POST /api/auth/register
@@ -152,4 +152,4 @@ class AuthController {
   }
 }
 
-module.exports = new AuthController();
+module.exports = new Auth2Controller();
