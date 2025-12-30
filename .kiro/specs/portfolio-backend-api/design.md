@@ -37,7 +37,7 @@ src/
 │   ├── projectController.js
 │   ├── postController.js
 │   ├── skillController.js
-│   ├── certificateController.js
+│   ├── certificate2Controller.js
 │   └── dashboardController.js
 ├── services/            # Business logic
 │   ├── authService.js
