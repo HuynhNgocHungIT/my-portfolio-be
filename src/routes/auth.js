@@ -1,6 +1,6 @@
 const express = require('express');
 const { body } = require('express-validator');
-const authController = require('../controllers/authController');
+const auth2Controller = require('../controllers/auth2Controller');
 const authGuard = require('../middlewares/authGuard');
 const { handleValidationErrors, sanitizeBody } = require('../middlewares/validation');
 
@@ -135,7 +135,7 @@ router.post('/register', [
     .isIn(['user', 'admin'])
     .withMessage('Role must be either user or admin'),
   handleValidationErrors
-], authController.register);
+], auth2Controller.register);
 
 /**
  * @swagger
@@ -190,7 +190,7 @@ router.post('/login', [
     .notEmpty()
     .withMessage('Password is required'),
   handleValidationErrors
-], authController.login);
+], auth2Controller.login);
 
 /**
  * @swagger
@@ -231,7 +231,7 @@ router.post('/login', [
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get('/me', authGuard, authController.me);
+router.get('/me', authGuard, auth2Controller.me);
 
 /**
  * @swagger
@@ -255,7 +255,7 @@ router.get('/me', authGuard, authController.me);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.post('/refresh', authController.refreshToken);
+router.post('/refresh', auth2Controller.refreshToken);
 
 /**
  * @swagger
@@ -279,6 +279,6 @@ router.post('/refresh', authController.refreshToken);
  *                 message:
  *                   type: string
  */
-router.post('/logout', authGuard, authController.logout);
+router.post('/logout', authGuard, auth2Controller.logout);
 
 module.exports = router;
