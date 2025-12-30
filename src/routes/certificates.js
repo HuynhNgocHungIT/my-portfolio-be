@@ -1,6 +1,6 @@
 const express = require('express');
 const { body, param, query } = require('express-validator');
-const certificateController = require('../controllers/certificateController');
+const certificate2Controller = require('../controllers/certificate2Controller');
 const authGuard = require('../middlewares/authGuard');
 const { handleValidationErrors, sanitizeBody } = require('../middlewares/validation');
 
@@ -128,7 +128,7 @@ router.get('/', [
     .isLength({ min: 1, max: 255 })
     .withMessage('Issuer must be between 1 and 255 characters'),
   handleValidationErrors
-], certificateController.getMyCertificates);
+], certificate2Controller.getMyCertificates);
 
 /**
  * @swagger
@@ -166,7 +166,7 @@ router.get('/', [
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get('/issuers', authGuard, certificateController.getCertificatesByIssuer);
+router.get('/issuers', authGuard, certificate2Controller.getCertificatesByIssuer);
 
 /**
  * @swagger
@@ -214,7 +214,7 @@ router.get('/issuers', authGuard, certificateController.getCertificatesByIssuer)
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.get('/stats', authGuard, certificateController.getCertificateStats);
+router.get('/stats', authGuard, certificate2Controller.getCertificateStats);
 
 /**
  * @swagger
@@ -260,7 +260,7 @@ router.get('/search', [
     .isLength({ min: 1 })
     .withMessage('Search query is required and must not be empty'),
   handleValidationErrors
-], certificateController.searchCertificates);
+], certificate2Controller.searchCertificates);
 
 /**
  * @swagger
@@ -314,7 +314,7 @@ router.get('/date-range', [
     .isISO8601({ strict: true })
     .withMessage('End date must be in YYYY-MM-DD format'),
   handleValidationErrors
-], certificateController.getCertificatesByDateRange);
+], certificate2Controller.getCertificatesByDateRange);
 
 /**
  * @swagger
@@ -382,7 +382,7 @@ router.get('/user/:user_id', [
     .isLength({ min: 1, max: 255 })
     .withMessage('Issuer must be between 1 and 255 characters'),
   handleValidationErrors
-], certificateController.getCertificatesByUserId);
+], certificate2Controller.getCertificatesByUserId);
 
 /**
  * @swagger
@@ -468,7 +468,7 @@ router.post('/', [
     .trim()
     .withMessage('Icon must be a string'),
   handleValidationErrors
-], certificateController.createCertificate);
+], certificate2Controller.createCertificate);
 
 /**
  * @swagger
@@ -518,7 +518,7 @@ router.get('/:id', [
     .isUUID()
     .withMessage('Certificate ID must be a valid UUID'),
   handleValidationErrors
-], certificateController.getCertificateById);
+], certificate2Controller.getCertificateById);
 
 /**
  * @swagger
@@ -620,7 +620,7 @@ router.put('/:id', [
     .trim()
     .withMessage('Icon must be a string'),
   handleValidationErrors
-], certificateController.updateCertificate);
+], certificate2Controller.updateCertificate);
 
 /**
  * @swagger
@@ -676,6 +676,6 @@ router.delete('/:id', [
     .isUUID()
     .withMessage('Certificate ID must be a valid UUID'),
   handleValidationErrors
-], certificateController.deleteCertificate);
+], certificate2Controller.deleteCertificate);
 
 module.exports = router;
