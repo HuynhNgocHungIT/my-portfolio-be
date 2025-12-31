@@ -9,6 +9,7 @@ const Project = require('./Project')(sequelize, DataTypes);
 const Post = require('./Post')(sequelize, DataTypes);
 const Skill = require('./Skill')(sequelize, DataTypes);
 const Certificate = require('./Certificate')(sequelize, DataTypes);
+const MailQueue = require('./MailQueue')(sequelize, DataTypes);
 
 const db = {
   sequelize,
@@ -20,7 +21,8 @@ const db = {
   Project,
   Post,
   Skill,
-  Certificate
+  Certificate,
+  MailQueue
 };
 
 // Define associations here when models are created
